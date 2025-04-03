@@ -1,8 +1,3 @@
-#include <iostream>
-#include <stack>
-#include <sstream>
-#include <string>
-#include <cctype>
 #include "RPN.hpp"
 
 
@@ -13,5 +8,4 @@ int main(int ac, char* av[]) {
     }
     else
          RPN(av[1]) ;
-    return 0;
 }
