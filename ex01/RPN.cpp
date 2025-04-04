@@ -12,10 +12,7 @@ void  RPN(std::string expr)
         {
             int num = std::stoi(tracker);
             if( num > 9  )
-            {
-                std::cerr << "ERROR" << std::endl;
-                return ;
-             } 
+                throw std::runtime_error("error");
             else
                 stack.push(num);
         }
@@ -23,10 +20,7 @@ void  RPN(std::string expr)
         else if(tracker == "+" || tracker == "-" || tracker == "*" || tracker == "/"  )
         {
             if(stack.size() < 2)
-            {
-                std::cerr << "ERROR" << std::endl;
-                return ;
-            }
+                throw std::runtime_error("error");
             else
             {
                 int operation = 0;
@@ -43,29 +37,17 @@ void  RPN(std::string expr)
                 else if(tracker  == "/")
                 {
                     if(0 == b)
-                    {
-                        std::cerr << "ERROR" << std::endl;
-                        return ;
-                    }
+                        throw std::runtime_error("error");
                     operation = a / b; 
                 }
-                     
                 stack.push(operation);
             }
         }
         else 
-        {
-            std::cerr << "ERROR" << std::endl;
-             return ;
-        }    
+            throw std::runtime_error("error");   
     }
     if(stack.size() != 1)
-    {
-        std::cerr << "ERROR" << std::endl;
-        return  ;
-    }
-    
+        throw std::runtime_error("error");
     std::cout << stack.top() << std::endl;
     return;
-
 }
