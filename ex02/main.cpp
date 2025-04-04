@@ -4,13 +4,17 @@ static void expliciteTimealgo(int listSize, const std::string& cont_type, double
     std::cout << "Time to process a range of " << listSize << " elements with std::" << cont_type << " : " << time << " us" << std::endl;
 }
 int main(int ac, char **av) {
-    try {
-        // Process list
-        std::list<int> list = unsorted_list(av, ac);
+    if(ac < 3)
+    {
+        std::cerr << "Error" << std::endl;
+        return -1;
+    }
         
+    try {
+   
+        std::list<int> list = unsorted_list(av, ac);
         printlist(list, "unsorted");
 
-   
         clock_t start = clock();
         list = mergeInsertionSort(list);
         clock_t end = clock();
@@ -30,6 +34,7 @@ int main(int ac, char **av) {
 
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
+        return -1;
     }
 
     return 0;
